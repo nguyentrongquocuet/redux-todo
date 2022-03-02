@@ -1,13 +1,12 @@
-enum STATUS {
-  COMPLETED,
-  UNCOMPLETED,
-  CANCELLED,
+export enum STATUS {
+  COMPLETED = 'COMPLETED',
+  UNCOMPLETED = 'UNCOMPLETED',
 }
 
-enum PRIORITY {
-  HIGH,
-  MEDIUM,
-  LOW,
+export enum PRIORITY {
+  HIGH = 'HIGH',
+  MEDIUM = 'MEDIUM',
+  LOW = 'LOW',
 }
 
 export type TTodoStatus = keyof typeof STATUS;

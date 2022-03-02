@@ -4,12 +4,10 @@
     "es2021": true
   },
   "extends": [
-    "eslint:recommended",
-    "react",
-    "airbnb-base",
-    "airbnb-typescript/base",
-    "plugin:import/recommended",
-    "plugin:import/typescript"
+    "airbnb",
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "prettier"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -21,11 +19,24 @@
     "sourceType": "module"
   },
   "rules": {
-    "import/extensions": 0,
-    "import/norextraneous-dependencies": "off",
+    "import/extensions": "off",
     "import/prefer-default-export": "off",
-    "indent": "off",
-    "comma-dangle": "off",
-    "import/no-unresolved": "off"
+    "react/function-component-definition": ["error", {
+      "namedComponents": ["arrow-function"],
+      "unNamedComponents": ["arrow-function"]
+    }],
+    "react/jsx-props-no-spreading": "off",
+    "quotes": ["error", "single"]
+  },
+  "plugins": ["prettier"],
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "project": "./tsconfig.json"
+      }
+    }
   }
 }
