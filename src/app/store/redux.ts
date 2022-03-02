@@ -11,18 +11,18 @@ const rootReducer = combineReducers({
   }),
 });
 
-function logger(context: any) {
-  console.log('--context', context);
+function loggerLeft(context: any) {
+  console.log('--call left logger middleware', context);
   const { getState } = context;
   return next => action => {
-    console.log('will dispatch', action)
+    console.log('left will dispatch', action)
 
     // Call the next dispatch method in the middleware chain.
-    const returnValue = next({type: 'shit'})
+    const returnValue = next({ type: 'shit-left' })
 
     console.log('state after dispatch', getState())
 
-    console.log(returnValue);
+    console.log('return value left', returnValue);
 
     // This will likely be the action itself, unless
     // a middleware further in chain changed it.
@@ -30,7 +30,26 @@ function logger(context: any) {
   }
 }
 
-const store = createStore(rootReducer, compose(applyMiddleware(logger), composeWithDevTools()));
+function loggerRight(context: any) {
+  console.log('--call right logger middleware', context);
+  const { getState } = context;
+  return next => action => {
+    console.log('right will dispatch', action)
+
+    // Call the next dispatch method in the middleware chain.
+    const returnValue = next({type: 'shit-right'})
+
+    console.log('state after dispatch', getState())
+
+    console.log('return value right', returnValue);
+
+    // This will likely be the action itself, unless
+    // a middleware further in chain changed it.
+    return { type: 'modified'}
+  }
+}
+
+const store = createStore(rootReducer, compose(applyMiddleware(loggerLeft, loggerRight), composeWithDevTools()));
 
 export type TRootState = ReturnType<typeof store.getState>;
 
