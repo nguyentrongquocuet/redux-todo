@@ -5,7 +5,7 @@ import * as actionTypes from './constants';
 export type TToggleStatus = {
   type: typeof actionTypes.TOGGLE_STATUS;
   payload: string;
-}
+};
 
 export type TAddTodo = {
   type: typeof actionTypes.ADD_TODO;
