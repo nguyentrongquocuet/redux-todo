@@ -12,7 +12,6 @@
     "lint:fix": "npx eslint --fix src",
     "prepare": "husky install"
   },
-  "type": "module",
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -60,6 +59,6 @@
     "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx,js,jsx}": "npm run lint"
+    "*.{ts,tsx,js,jsx}": "npx eslint src"
   }
 }
