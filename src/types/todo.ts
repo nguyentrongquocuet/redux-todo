@@ -20,3 +20,5 @@ export interface ITodo {
   status: TTodoStatus;
   priority: TTodoPriority;
 }
+
+export type TTodoData = Omit<ITodo, 'id' | 'created'>;

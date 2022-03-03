@@ -12,6 +12,4 @@ const createPortal = () => {
   if (!getPortal()) createPortal();
 })();
 
-export {
-  getPortal,
-};
+export { getPortal };
